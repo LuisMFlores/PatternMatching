@@ -54,3 +54,14 @@ case ("twostraws", "fr0st1es", _):
 default:
     print("Who are you?")
 }
+
+// Partial Matching with Let
+
+switch newAuthentication {
+case ("bilbo", let password, _):
+    print("Hello bilbo, password \(password)")
+case (let internalName, let internalPassword, let internalIPAddress):
+    print("Welcome \(internalName). Your password is \(internalPassword) with an ipAddress of \(internalIPAddress)")
+default:
+    print("Unkown")
+}
