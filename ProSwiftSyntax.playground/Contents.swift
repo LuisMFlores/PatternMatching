@@ -39,3 +39,18 @@ case ("twostraws", "fr0st1es"):
 default:
     print("Hello Unknown person")
 }
+
+// Partial Matches
+// Swift will take first matching case it finds so ensure you look for the most specific case first
+let newAuthentication = (name: "twostraws", password: "fr0st1es", ipAddress: "127.0.01")
+
+switch newAuthentication {
+case (_, _, _):
+    print("You could be anybody")
+case ("bilbo", "bagg1n5", _):
+    print("Welcome Bilbo")
+case ("twostraws", "fr0st1es", _):
+    print("Hello Luis")
+default:
+    print("Who are you?")
+}
