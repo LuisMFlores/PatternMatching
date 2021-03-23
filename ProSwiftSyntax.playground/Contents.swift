@@ -27,3 +27,15 @@ default:
     print("Hello Unknown person")
 }
 
+// Validating two values with a single tuple
+
+let authenthication = (name: newName, password: password)
+
+switch authenthication {
+case ("bilbo","bagg1n5"):
+    print("Hello you")
+case ("twostraws", "fr0st1es"):
+    print("Hello Luis M.")
+default:
+    print("Hello Unknown person")
+}
