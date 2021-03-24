@@ -65,3 +65,24 @@ case (let internalName, let internalPassword, let internalIPAddress):
 default:
     print("Unkown")
 }
+
+// Matching calculated tuples
+
+func fizzbuzz(withNumber number: Int) {
+    var wordToprint = ""
+    switch (number % 3 == 0, number % 5 == 0) {
+    case (true, false):
+        wordToprint = "Fizz"
+    case (false, true):
+        wordToprint = "Buzz"
+    case (true, true):
+        wordToprint = "FizzBuzz"
+    default:
+        wordToprint = String(number)
+    }
+    print(wordToprint)
+}
+
+for i in 1...100 {
+    fizzbuzz(withNumber: i)
+}
