@@ -277,3 +277,27 @@ let newForecast: [newWeatherType] = [.cloudy(coverage: 40), .sunny, .cloudy(cove
 for case let .cloudy(coverage) in newForecast {
     print(coverage)
 }
+
+// Matching types
+
+let view: AnyObject = UIButton()
+
+switch view {
+case is UIButton:
+    print("Found a button")
+default:
+    print("Found a view")
+}
+
+view.addSubview(UIButton())
+
+// No type casting
+for button in view.subviews where button is UIButton {
+    print(button)
+}
+
+for case let button as UIButton in view.subviews {
+    print("Found a button \(button)")
+}
+
+
