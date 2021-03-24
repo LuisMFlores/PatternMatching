@@ -66,7 +66,7 @@ default:
     print("Unkown")
 }
 
-// Matching calculated tuples
+// Pattern mamtching with calculated tuples
 
 func fizzbuzz(withNumber number: Int) {
     var wordToprint = ""
@@ -85,4 +85,32 @@ func fizzbuzz(withNumber number: Int) {
 
 for i in 1...100 {
     fizzbuzz(withNumber: i)
+}
+
+// Pattern matching with loops
+
+let twostraws = (name: "twostraws", password: "fr0st1es")
+let bilbo = (name: "Bilbo", password: "bagg1n5")
+let taylor = (name: "Taylor", password: "fr0st1es")
+
+let users = [twostraws, bilbo, taylor]
+
+for user in users {
+    print(user.name)
+}
+
+for case ("twostraws", "fr0st1es") in users {
+    print("User twostraws has the password fr0st1es")
+}
+
+for case (let name, let password) in users {
+    print("User's name is \(name) and password is \(password)")
+}
+
+for case let (name, password) in users {
+    print("User's name is \(name) and password is \(password)")
+}
+
+for case let (name, "fr0st1es") in users {
+    print("Username is \(name)")
 }
