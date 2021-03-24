@@ -114,3 +114,28 @@ for case let (name, password) in users {
 for case let (name, "fr0st1es") in users {
     print("Username is \(name)")
 }
+
+// Pattern matching with optionals
+
+let newNewName: String? = "twostraws"
+let newNewPassword: String? = "fr0st1es"
+
+switch (newNewName, newNewPassword) {
+case (.some(name), .some(password)):
+    print("newNewName is \(name) and newNewPassword is \(password)")
+default:
+    print("Every value was a nil")
+}
+
+switch (newNewName, newNewPassword) {
+case let (name?, password?):
+    print("newNewName is \(name) and newNewPassword is \(password)")
+default:
+    print("Every value was nil")
+}
+
+let newNames: [String?] = ["Luis", nil, "Manuel"]
+
+for case let name? in newNames {
+    print(name)
+}
