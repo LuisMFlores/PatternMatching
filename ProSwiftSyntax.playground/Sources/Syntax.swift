@@ -324,4 +324,42 @@ public func runSyntaxChapter() {
     for case let name? in optionalCelebries {
         print(name)
     }
+    
+    // Nil Coalescing
+    
+    if true {
+        var name: String? = "Taylor"
+        name = nil
+        var unwrappedName = name ?? "Anonymous"
+        print(unwrappedName)
+
+        print(name ?? "Anonymus")
+
+        var savedText: String
+
+        do {
+            savedText = try String(contentsOfFile: "saved.txt")
+        } catch {
+            print("Failed to fetch this")
+            savedText = "Hello, World"
+        }
+
+        print(savedText)
+
+        savedText = (try? String(contentsOfFile: "saved.txt")) ?? "Hello world"
+        print(savedText)
+    }
+    
+    // Guard
+
+    for i in 1...100 where i % 8 == 0 {
+        print(i)
+    }
+
+
+    for i in 1...100 {
+        guard i % 8 == 0 else { continue }
+        print(i)
+    }
+    
 }
