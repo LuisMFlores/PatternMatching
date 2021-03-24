@@ -37,4 +37,43 @@ class LazySinger {
 }
 
 let lazyTaylor = Singer(name: "Taylor Swift")
-print(taylor.reversedName)
+print(lazyTaylor.reversedName)
+
+
+// lazy methods
+
+class LazySingetTwo {
+    let name: String
+    lazy var reversedName = self.getReversedName()
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    private func getReversedName() -> String {
+        return "\(self.name.uppercased()) backward is \(String(self.name.uppercased().reversed()))!"
+    }
+}
+
+let lazySingerTwo = LazySingetTwo (name: "Luis Manuel")
+print(lazySingerTwo.reversedName)
+
+// Lazy Singleton
+
+class MusicPlayer {
+    init() {
+        print("Ready To Play")
+    }
+}
+
+class NewSingerMusicPlayer {
+    static let musicPlayer = MusicPlayer()
+    init() {
+        print("Creating a nenw singer")
+    }
+}
+
+let luima = NewSingerMusicPlayer()
+NewSingerMusicPlayer.musicPlayer
+
+// Lazy sequence
