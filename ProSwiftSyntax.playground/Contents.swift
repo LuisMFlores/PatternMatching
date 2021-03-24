@@ -2,105 +2,18 @@ import UIKit
 
 //runSyntaxChapter()
 
-// Lazy loading
+// Labeled statements
 
-class Singer {
-    let name: String
-    let reversedNameString: String
-    
-    init(name: String) {
-        self.name = name
-        // Slow code since it will be calculate multiple time whether or not this property is used
-        self.reversedNameString = "\(name.uppercased()) backward is \(String(name.uppercased().reversed()))!"
-    }
-    
-    func reversedName() -> String {
-        return "\(name.uppercased()) backward is \(String(name.uppercased().reversed()))!"
-    }
-}
+var board = [[String]](repeating: [String].init(repeating: "", count: 10), count: 5)
+board[3][5] = "x"
 
-let taylor = Singer(name: "Taylor Swift")
-print(taylor.reversedName())
+print(board)
 
-// Lazy closures
-
-class LazySinger {
-    let name: String
-    lazy var reversedName: String = {
-        "\(self.name.uppercased()) backward is \(String(self.name.uppercased().reversed()))!"
-    }()
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-}
-
-let lazyTaylor = Singer(name: "Taylor Swift")
-print(lazyTaylor.reversedName)
-
-
-// lazy methods
-
-class LazySingetTwo {
-    let name: String
-    lazy var reversedName = self.getReversedName()
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    private func getReversedName() -> String {
-        return "\(self.name.uppercased()) backward is \(String(self.name.uppercased().reversed()))!"
+rowLoop: for (rowIndex, cols) in board.enumerated() {
+    columnLoop: for (colIndex, col) in cols.enumerated() {
+        if col == "x" {
+            print("Found it at row \(rowIndex) column \(colIndex)")
+            break rowLoop
+        }
     }
 }
-
-let lazySingerTwo = LazySingetTwo (name: "Luis Manuel")
-print(lazySingerTwo.reversedName)
-
-// Lazy Singleton
-
-class MusicPlayer {
-    init() {
-        print("Ready To Play")
-    }
-}
-
-class NewSingerMusicPlayer {
-    static let musicPlayer = MusicPlayer()
-    init() {
-        print("Creating a nenw singer")
-    }
-}
-
-let luima = NewSingerMusicPlayer()
-NewSingerMusicPlayer.musicPlayer
-
-// Lazy sequence
-
-func fibonnaci(of num: Int) -> Int {
-    if num < 2 {
-        return num
-    } else {
-        return fibonnaci(of: num - 1) + fibonnaci(of: num - 2)
-    }
-}
-
-let fibonnaciSequence = Array(0...199).lazy.map(fibonnaci)
-print(fibonnaciSequence[19])
-
-// Destructing
-
-var data = ("one", "two", "three")
-let one = data.0
-let two = data.1
-let three = data.2
-
-let (newOne, newTwo, newThree) = data
-print(newOne)
-
-func getPerson() -> (String, Int) {
-    return ("Taylor Swift", 26)
-}
-let (name, age) = getPerson()
-print("The person's name is \(name) and is \(age) years old")
