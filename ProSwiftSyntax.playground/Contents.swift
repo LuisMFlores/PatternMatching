@@ -6,8 +6,10 @@ func inspect<T>(withValue value: T) {
     print("Inspecting  \(type(of:value))")
 }
 
-struct Dog {
-    
+// Limiting generics
+
+func square<T: Numeric>(withValue value: T) -> T {
+    return value * value
 }
 
-inspect(withValue: Dog())
+print(square(withValue: 16.5))
