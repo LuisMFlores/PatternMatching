@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 // Generics
 
@@ -43,3 +44,27 @@ testDequeue.pushFront(1)
 print(testDequeue)
 testDequeue.popBack()
 testDequeue.popFront()
+
+// Working with cocoa types
+
+struct CustomCountedSet<T:Any> {
+    let internalSet = NSCountedSet()
+    
+    mutating func add(_ object: T) {
+        internalSet.add(object)
+    }
+    
+    mutating func remove(_ object: T) {
+        internalSet.remove(object)
+    }
+    
+    func count(for object: T) -> Int {
+        return internalSet.count(for: object)
+    }
+    
+}
+
+var countedSet = CustomCountedSet<String>()
+countedSet.add("Hello")
+countedSet.add("Hello")
+print(countedSet.count(for: "Hello"))
