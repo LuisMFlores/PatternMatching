@@ -183,11 +183,97 @@ if (0..<18).contains(age) {
 
 let newUser = (name: "twostraws", password: "fr0s1es", age: 36)
 
-switch newUser {
+switch newUser	 {
 case let (noName, _, 0..<18):
     print("\(noName) has the energy and time, but no money")
 case let (noName, _, 18..<70):
     print("\(noName) has the money and energy, but no time")
 case let (noname, _, _):
     print("\(noname) is dead")
+}
+
+// Matching enums and associated values
+
+enum WeatherType {
+    case cloudy
+    case sunny
+    case windy
+}
+
+let today = WeatherType.cloudy
+
+switch today {
+case .cloudy:
+    print("Cloudy")
+case .sunny:
+    print("Sunny")
+case .windy:
+    print("windy")
+}
+
+if today == .cloudy {
+    print("Cloudy")
+}
+
+enum newWeatherType {
+    case cloudy(coverage: Int)
+    case sunny
+    case windy
+}
+
+let newToday = newWeatherType.cloudy(coverage: 100)
+
+switch newToday {
+case .cloudy:
+    print("Cloudy")
+case .sunny:
+    print("Sunny")
+case .windy:
+    print("windy")
+}
+
+switch newToday {
+case .cloudy(let coverage):
+    print("Cloud coverage is \(coverage)")
+case .sunny:
+    print("Sunny")
+case .windy:
+    print("windy")
+}
+
+
+switch newToday {
+case .cloudy(let coverage) where coverage < 100:
+    print("Cloud coverage is \(coverage)")
+case .cloudy(let coverage) where coverage == 100:
+    print("Its overcast")
+case .sunny:
+    print("Sunny")
+case .windy:
+    print("windy")
+default:
+print("")
+}
+
+switch newToday {
+case .cloudy(let coverage) where coverage == 0:
+    print("its not cloudy")
+case .cloudy(let coverage) where (0..<50).contains(coverage):
+    print(("its at least 50% coverage"))
+case .cloudy(let coverage) where coverage > 50:
+    print("There are a lot of clouds")
+default:
+    print("")
+}
+
+let forecast: [WeatherType] = [.cloudy, .sunny, .windy]
+
+for day in forecast where day == .cloudy {
+    print(day)
+}
+
+let newForecast: [newWeatherType] = [.cloudy(coverage: 40), .sunny, .cloudy(coverage: 100), .sunny]
+
+for case let .cloudy(coverage) in newForecast {
+    print(coverage)
 }
