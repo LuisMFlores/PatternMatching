@@ -77,3 +77,16 @@ let luima = NewSingerMusicPlayer()
 NewSingerMusicPlayer.musicPlayer
 
 // Lazy sequence
+
+func fibonnaci(of num: Int) -> Int {
+    if num < 2 {
+        return num
+    } else {
+        return fibonnaci(of: num - 1) + fibonnaci(of: num - 2)
+    }
+}
+
+let fibonnaciSequence = Array(0...199).lazy.map(fibonnaci)
+print(fibonnaciSequence[19])
+print(fibonnaciSequence[19])
+print(fibonnaciSequence[19])
