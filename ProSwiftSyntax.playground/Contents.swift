@@ -88,5 +88,19 @@ func fibonnaci(of num: Int) -> Int {
 
 let fibonnaciSequence = Array(0...199).lazy.map(fibonnaci)
 print(fibonnaciSequence[19])
-print(fibonnaciSequence[19])
-print(fibonnaciSequence[19])
+
+// Destructing
+
+var data = ("one", "two", "three")
+let one = data.0
+let two = data.1
+let three = data.2
+
+let (newOne, newTwo, newThree) = data
+print(newOne)
+
+func getPerson() -> (String, Int) {
+    return ("Taylor Swift", 26)
+}
+let (name, age) = getPerson()
+print("The person's name is \(name) and is \(age) years old")
