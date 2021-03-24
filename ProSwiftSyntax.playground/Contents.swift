@@ -1,19 +1,16 @@
 import UIKit
 
-//runSyntaxChapter()
+// Nested functions classes and structs
 
-// Labeled statements
-
-var board = [[String]](repeating: [String].init(repeating: "", count: 10), count: 5)
-board[3][5] = "x"
-
-print(board)
-
-rowLoop: for (rowIndex, cols) in board.enumerated() {
-    columnLoop: for (colIndex, col) in cols.enumerated() {
-        if col == "x" {
-            print("Found it at row \(rowIndex) column \(colIndex)")
-            break rowLoop
-        }
+enum London {
+    static let coordinates = (lat: 51.507222, lon: -0.1275)
+    
+    enum SubwayLines {
+        case bakerloo, central, circle, district, elizabeth, hamersmithCity, jubilee, metropolitan, northern, piccdailly, victoria, waterlooCity
+    }
+    
+    enum Places {
+        case buckinghamPalace, cityHall, oldBailey, piccadilly, stPaulsCathedral
     }
 }
+
