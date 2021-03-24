@@ -136,6 +136,58 @@ default:
 
 let newNames: [String?] = ["Luis", nil, "Manuel"]
 
+for case let .some(name) in newNames {
+    print(name)
+}
+
 for case let name? in newNames {
     print(name)
+}
+
+// Pattern matching with ranges
+
+let age = 36
+
+switch age {
+case 0..<18:
+    print("You can't drink")
+case 0..<70:
+    print("You are old")
+default:
+    print("You are dead")
+}
+
+if case 0..<18 = age {
+    print("You can't drink")
+} else if case 0..<70  = age {
+    print("You are old")
+} else {
+    print("You are dead")
+}
+
+if  0..<18 ~= age {
+    print("You can't drink")
+} else if 0..<70  ~= age {
+    print("You are old")
+} else {
+    print("You are dead")
+}
+
+if (0..<18).contains(age) {
+    print("You can't drink")
+} else if (0..<70).contains(age) {
+    print("You are old")
+} else {
+    print("You are dead")
+}
+
+let newUser = (name: "twostraws", password: "fr0s1es", age: 36)
+
+switch newUser {
+case let (noName, _, 0..<18):
+    print("\(noName) has the energy and time, but no money")
+case let (noName, _, 18..<70):
+    print("\(noName) has the money and energy, but no time")
+case let (noname, _, _):
+    print("\(noname) is dead")
 }
