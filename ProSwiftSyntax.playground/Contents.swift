@@ -23,3 +23,10 @@ func variadicAdd(numbers: Int...) -> Int {
 }
 
 variadicAdd(numbers: 1,2,3,4,5)
+
+// Closures with parameters
+
+let greetPerson = { (name: String) in
+    print("Hello \(name)!")
+}
+
