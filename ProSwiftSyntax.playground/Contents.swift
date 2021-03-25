@@ -205,3 +205,29 @@ func testCatch() {
 }
 
 testCatch()
+
+// Error propagation
+
+enum newPasswordError: Error {
+    case empty
+    case short
+    case obvious
+}
+
+func functionA() {
+    functionB()
+}
+
+func functionB() {
+    do {
+       try functionC()
+    } catch {
+        print("Error \(error)")
+    }
+}
+
+func functionC() throws {
+    throw newPasswordError.short
+}
+
+functionA()
