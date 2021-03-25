@@ -37,3 +37,21 @@ func runSomeClosure(_ closure: (String) -> Void) {
 }
 
 runSomeClosure(greetPerson)
+
+// Closure capturing
+
+func testCapture() -> () -> Void {
+    var counter = 0
+    return {
+        counter += 1
+        print(counter)
+    }
+}
+
+let test = testCapture()
+test()
+test()
+test()
+
+print(test)
+
