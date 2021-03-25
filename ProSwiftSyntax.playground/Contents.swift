@@ -105,3 +105,31 @@ words.contains(where: input.contains)
 
 let number = [1,2,3,4,5]
 number.reduce(0, -)
+
+// Escaping closures
+
+var queueClosures: [() -> Void] = []
+
+func queueClosures(_ closure: @escaping () -> Void) {
+    queueClosures.append(closure)
+}
+
+queueClosures ({
+    print("Running closure 1")
+})
+
+queueClosures ({
+    print("Running closure 2")
+})
+ 
+queueClosures ({
+    print("Running closure 3")
+})
+
+func executeClosures() {
+    for closure in queueClosures {
+        closure()
+    }
+}
+
+executeClosures()
