@@ -53,5 +53,40 @@ test()
 test()
 test()
 
-print(test)
+// Closure shorthand syntax
 
+let filterNameClosure: (String) -> Bool = {
+    return $0.hasPrefix("Avril")
+}
+
+let celebritiesName = ["Michael Jackson", "Avril Lavigne", "Michael Jordan"]
+
+let result1 = celebritiesName.filter { (name) -> Bool in
+    if name.hasPrefix("Michael") {
+        return true
+    } else {
+        return false
+    }
+}
+
+let result2 = celebritiesName.filter { name -> Bool in
+    if name.hasPrefix("Michael") {
+        return true
+    } else {
+        return false
+    }
+}
+
+let result3 = celebritiesName.filter { name -> Bool in
+    return name.hasPrefix("Michael")
+}
+
+let result4 = celebritiesName.filter { name -> Bool in
+    name.hasPrefix("Michael")
+}
+
+let result5 = celebritiesName.filter ({
+    $0.hasPrefix("Michael")
+})
+
+let result6 = celebritiesName.filter { $0.hasPrefix("Michael")}
