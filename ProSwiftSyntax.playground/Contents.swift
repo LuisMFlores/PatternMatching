@@ -152,3 +152,22 @@ func autoPrintTest(_ result: @autoclosure () -> Void) {
 
 autoPrintTest(print("Hello"))
 
+func autoEscapingPrintTest(_ result: @autoclosure @escaping () -> Void) {
+    print("Before")
+    result()
+    print("After")
+}
+
+autoEscapingPrintTest(print("Luis"))
+
+// The match operator or  ~= operator
+
+let range = 1...100
+let i = 42
+
+if range ~= i {
+    print("Match")
+}
+
+let test1 = range.contains(i)
+let test2 = range ~= i
