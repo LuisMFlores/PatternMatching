@@ -133,3 +133,22 @@ func executeClosures() {
 }
 
 executeClosures()
+
+// Autoclosures
+
+func printTest(_ result: () -> Void) {
+    print("Before")
+    result()
+    print("After")
+}
+
+print(printTest ({ print("Hello") }))
+
+func autoPrintTest(_ result: @autoclosure () -> Void) {
+    print("Before")
+    result()
+    print("After")
+}
+
+autoPrintTest(print("Hello"))
+
