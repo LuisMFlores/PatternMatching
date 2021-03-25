@@ -90,3 +90,18 @@ let result5 = celebritiesName.filter ({
 })
 
 let result6 = celebritiesName.filter { $0.hasPrefix("Michael")}
+
+// Functions as closures
+
+let words = ["1989", "Luis", "Manuel"]
+let input = "Luis"
+
+let containsClosure:(String) -> Bool = {
+    return $0 == "Luis"
+}
+
+words.contains(where: containsClosure)
+words.contains(where: input.contains)
+
+let number = [1,2,3,4,5]
+number.reduce(0, -)
