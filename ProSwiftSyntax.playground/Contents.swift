@@ -231,3 +231,32 @@ func functionC() throws {
 }
 
 functionA()
+
+// Throwing functions as parameters
+
+enum Failure: Error {
+    case broken
+    case badNetwork(message: String)
+}
+
+func fetchRemote() throws -> String {
+    throw Failure.badNetwork(message: "Firewall Block Port.")
+}
+
+func fetchLocal() -> String {
+    return "Taylor"
+}
+
+func fetchUserData(using closure: () throws -> String) rethrows {
+    do {
+        let data = try closure()
+        print("Userdata: \(data)")
+    } catch Failure.badNetwork(message: let message) {
+        print("Error: \(message)")
+    } catch {
+        print("Error: \(error)")
+    }
+}
+
+fetchUserData(using: fetchLocal)
+try fetchUserData(using: fetchRemote)
