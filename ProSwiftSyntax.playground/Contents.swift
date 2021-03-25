@@ -30,3 +30,10 @@ let greetPerson = { (name: String) in
     print("Hello \(name)!")
 }
 
+// Functions with closures as parameters
+
+func runSomeClosure(_ closure: (String) -> Void) {
+    closure("Luis")
+}
+
+runSomeClosure(greetPerson)
