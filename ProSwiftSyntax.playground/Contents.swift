@@ -171,3 +171,37 @@ if range ~= i {
 
 let test1 = range.contains(i)
 let test2 = range ~= i
+
+// Error fundamentals
+
+enum PasswordError: Error {
+    case empty
+    case short
+    case obvious(message: String)
+}
+
+func encrypt(_ str: String, with password: String) throws -> String {
+    
+    if password == "12345" {
+        throw PasswordError.obvious(message: "This password is too obvious")
+    }
+    let encrypted = password + str + password
+    return String(encrypted.reversed())
+}
+
+func testCatch() {
+    do {
+        let encrypted = try encrypt("Secret", with: "12345")
+        print(encrypted)
+    } catch PasswordError.short {
+        print("Password is too short")
+    } catch PasswordError.empty {
+        print("Password field is empty")
+    } catch PasswordError.obvious(let message) {
+        print("You password is too obvious: \(message)")
+    } catch {
+        print("Encryptioned failed")
+    }
+}
+
+testCatch()
