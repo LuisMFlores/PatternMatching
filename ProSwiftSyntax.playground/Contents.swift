@@ -260,3 +260,33 @@ func fetchUserData(using closure: () throws -> String) rethrows {
 
 fetchUserData(using: fetchLocal)
 try fetchUserData(using: fetchRemote)
+
+// Map
+
+func lengthOf(strings: [String]) -> [Int] {
+    var results = [Int]()
+    for string in strings {
+        results.append(string.count)
+    }
+    return results
+}
+
+print(lengthOf(strings: ["Luima", "Merlin"]))
+
+func mapLengthOf(strings: [String]) -> [Int] {
+    strings.map { $0.count }
+}
+
+print(mapLengthOf(strings: ["Luima", "Merlin"]))
+
+let fruits = ["Apple", "Cherry", "Orange", "Pineapple"]
+let upperCasedFruits = fruits.map { $0.uppercased() }
+print(upperCasedFruits)
+
+let scores = [90,100,84]
+let formatted = scores.map {"Your score was \($0)"}
+print(formatted)
+
+let passOrFail = scores.map { $0 > 85 ? "You passed!" : "You Failed!"}
+print(passOrFail)
+
