@@ -391,3 +391,10 @@ let sortComparableJustin = SortPersonComparable(name: "Justin", age: 30)
 let sortComparableLuis = SortPersonComparable(name: "Luis", age: 29)
 
 print([sortComparableJustin, sortComparableTaylor, sortComparableLuis].sorted())
+
+// Reverse sorting
+
+let namesToReverse = ["Bravo", "Paul", "Adele", "Justin"]
+let namesArr = Array(namesToReverse.sorted().reversed())
+print("Names arr is \(namesArr.first)")
+namesArr.map { print($0)}
