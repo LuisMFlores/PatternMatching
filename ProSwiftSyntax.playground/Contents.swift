@@ -303,3 +303,8 @@ print(newScores.compactMap { Int($0) } )
 let files = (1...10).compactMap { try? String(contentsOfFile: "some-file\($0)") }
 let view = UIView()
 let labels = view.subviews.compactMap { $0 as? UILabel }
+
+// FlatMap
+
+let numbers = [[1,2,3], [4,5,6], [7,8,9]]
+print(numbers.flatMap { $0 })
