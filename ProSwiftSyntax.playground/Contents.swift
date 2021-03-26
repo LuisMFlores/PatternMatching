@@ -318,3 +318,24 @@ print(evenFibonnaciNum)
 let names = ["Michael Jackson", "Avril Lavigne", "Michael Jordan"]
 let filteredNames = names.filter { $0.hasPrefix("Michael")}
 print(filteredNames)
+
+// Reduce
+
+let reducedFibonnaciNumbers = fibonacciNumbers.reduce(0, +)
+print(reducedFibonnaciNumbers)
+
+let newResults = fibonacciNumbers.reduce("") { $0 + String($1)}
+print(newResults)
+
+let luimaChar = ["l", "u", "i", "m", "a"]
+print(luimaChar.reduce(""){ $0 + $1})
+
+let newNames = ["Taylor", "Paul", "Adele"]
+print(newNames.reduce(0){ $0 + $1.count})
+
+let ages = [18, 20, 15, 22]
+let areAgesOk = ages.reduce(true){$0 && ($1 >= 18)}
+print(areAgesOk)
+
+let otherAreAgesOk = ages.allSatisfy { $0 > 20}
+print(otherAreAgesOk)
