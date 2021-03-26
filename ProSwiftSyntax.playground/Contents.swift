@@ -339,3 +339,55 @@ print(areAgesOk)
 
 let otherAreAgesOk = ages.allSatisfy { $0 > 20}
 print(otherAreAgesOk)
+
+let multiArr = [[1,2,3], [4,5,6]]
+let reduceToSingle = multiArr.reduce([]) { $0 + $1 }
+print(reduceToSingle)
+
+// Sort
+
+let scoreStrings = ["100", "95", "85"]
+let sortedStrings1 = scoreStrings.sorted()
+print(sortedStrings1)
+
+let scoreInts = scoreStrings.compactMap { Int($0) }
+let sortedScoreInts = scoreInts.sorted()
+print(sortedScoreInts)
+
+struct SortPerson {
+    var name: String
+    var age: Int
+}
+
+let sortTaylor = SortPerson(name: "Taylor", age: 26)
+let sortJustin = SortPerson(name: "Justin", age: 30)
+let sortLuis = SortPerson(name: "Luis", age: 29)
+
+let peopleToBeSorted = [sortTaylor, sortJustin, sortLuis]
+let sortedPeopleByName = peopleToBeSorted.sorted { $0.name < $1.name }
+let sortedPeopleByAge = peopleToBeSorted.sorted { $0.age < $1.age }
+sortedPeopleByName.map { print($0.name)}
+sortedPeopleByAge.map { print($0.name)}
+
+struct SortPersonComparable {
+    var name: String
+    var age: Int
+}
+
+extension SortPersonComparable: Comparable {
+    
+    static func < (lhs: SortPersonComparable, rhs: SortPersonComparable) -> Bool {
+        lhs.age < rhs.age
+    }
+    
+    static func == (lhs: SortPersonComparable, rhs: SortPersonComparable) -> Bool {
+        lhs.name == rhs.name && lhs.age == rhs.age
+    }
+    
+}
+
+let sortComparableTaylor = SortPersonComparable(name: "Taylor", age: 26)
+let sortComparableJustin = SortPersonComparable(name: "Justin", age: 30)
+let sortComparableLuis = SortPersonComparable(name: "Luis", age: 29)
+
+print([sortComparableJustin, sortComparableTaylor, sortComparableLuis].sorted())
