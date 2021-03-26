@@ -290,3 +290,16 @@ print(formatted)
 let passOrFail = scores.map { $0 > 85 ? "You passed!" : "You Failed!"}
 print(passOrFail)
 
+// CompactMap
+
+let albums: [String?] = ["Fearless", nil, "Speak now", nil, "Red"]
+
+let albumsResults = albums.compactMap { $0 }
+print(albumsResults)
+
+let newScores = ["100", "90", "Fish", "85"]
+print(newScores.compactMap { Int($0) } )
+
+let files = (1...10).compactMap { try? String(contentsOfFile: "some-file\($0)") }
+let view = UIView()
+let labels = view.subviews.compactMap { $0 as? UILabel }
