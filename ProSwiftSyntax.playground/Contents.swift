@@ -453,3 +453,7 @@ print(lazyMap[5000])
 print(lazyMap[5000])
 
 //When you run that, you’ll see Swift runs the $0 % 2 == 0 closure 10,000 times to calculate the first print() statement, then another 10,000 times to calculate the second print() statement. This is because the result of filter() can’t be known until all items have been processed – Swift has no idea how many items are in the resulting array until everything has been processed. On the other hand, the third and fourth print() calls execute immediately, because Swift can run the map() closure on a single element and ignore the rest. This is particularly problematic when you chain functions together, because if filter() comes first in your chain you will end up having to repeat vast amounts of work
+
+// Functor and monads
+
+
