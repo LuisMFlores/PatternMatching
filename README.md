@@ -1,5 +1,6 @@
 # ProSwift
-Lazy functions and sequence\n
+Lazy functions and sequence
+
 Functional composition
 Reversed sorting
 Sort
